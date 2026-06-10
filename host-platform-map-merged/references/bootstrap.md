@@ -33,9 +33,11 @@ python3 scripts/gen-map.py <host-source-dir>
 It auto-detects the ecosystem and emits a markdown table of **every** descriptor it
 finds. Two follow-ups matter:
 
-- **Trim it.** The raw dump can be hundreds of rows. Cut it to the modules the
-  project actually builds against; the long tail stays grep-on-demand. Note that in
-  the reference so a future reader doesn't mistake the thinness for incompleteness.
+- **Trim noise, not reach.** The raw dump can be hundreds of rows, but most of that
+  is localization packs, themes, and test/demo modules — cut those for readability.
+  **Keep the functional surface broad:** a new feature will extend modules the
+  project doesn't use yet, and the map is exactly how you find which module owns the
+  concept. Scoping to current usage belongs in the cookbook, not the map.
 - **Commit both** the script and the trimmed table next to the reference — the table
   is readable without running anything; the script regenerates it after an upgrade.
 
@@ -49,8 +51,9 @@ is identical: read the descriptor, pull the same fields by hand.
 | Python packages | `pyproject.toml` | `[project]` name/description, `[project.entry-points]` groups |
 | WordPress plugins | PHP file header comment | `Plugin Name`, `Description`, `Requires`, `Requires PHP` |
 
-Favor the modules the project builds against; the rest are discoverable by grep
-when a feature needs them.
+Keep coverage across the host's functional modules — that's what lets the map place
+a feature in territory the project hasn't touched yet. Only the genuine long tail
+(localization, themes, test/demo) is left to grep-on-demand.
 
 ## 2. The cookbook — patterns from real examples
 

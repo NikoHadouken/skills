@@ -12,9 +12,16 @@ does this need code at all?* This skill kills that tax cheaply and durably.
 
 ## Quick start
 
-1. Run `python3 scripts/gen-map.py <host-source-dir>` to generate the module map.
-2. Read [references/bootstrap.md](references/bootstrap.md) for the full Bootstrap how-to.
-3. See [references/EXAMPLES.md](references/EXAMPLES.md) for a finished reference to model.
+Pick the mode you're in — only **Bootstrap** runs the map generator (`gen-map.py`):
+
+- **A reference already exists** → **Consult**: read it and start from its decision
+  tree. Regenerate nothing.
+- **No reference yet, you're building one** → **Bootstrap**: read
+  [references/bootstrap.md](references/bootstrap.md); see
+  [references/EXAMPLES.md](references/EXAMPLES.md) for the target shape. Generating
+  the map with `gen-map.py` is step 2 there.
+- **The host version changed** → **Maintain**: rerun the map and spot-check that
+  cookbook example paths still resolve.
 
 ## The core idea: document the thin layer, not the source
 
@@ -48,15 +55,18 @@ Full how-to in [references/bootstrap.md](references/bootstrap.md) — read it be
 building. In brief:
 
 1. Locate the host source and its version/build id.
-2. Generate the map from machine-readable descriptors (`gen-map.py`), then **trim**
-   to the modules the project actually builds against.
+2. Generate the map from descriptors (`gen-map.py`) and keep it **broad** — cut only
+   noise (localization, themes, test/demo modules), never current usage. A new
+   feature reaches into modules you don't build against yet, and the map is how you
+   find them.
 3. Build the cookbook from real examples already in the repo — one pointer per
    change-type.
 4. Write the decision tree: config → custom code → third-party.
 5. Place as a separate top-level file in the target repo; stamp the host version
    at the top.
 
-Bias to minimal: map + a handful of patterns for the common cases. Stop there.
+Keep the map broad (step 2); keep the cookbook minimal — a handful of patterns for
+the common cases. Stop there.
 
 ### Consult — the reference exists, you're doing a feature
 
@@ -78,7 +88,7 @@ schedule. Add it to the project's upgrade checklist.
 - Pointer-heavy, code-light. Pasting source bodies → stop, link instead.
 - No per-model/per-class prose — that's what grep is for.
 - Generated over hand-written wherever metadata allows (the map especially).
-- Done = map + enough patterns for the common cases. Resist completeness.
+- Done = a broad map + enough patterns for the common cases. Resist completeness in the patterns, not the map.
 
 ## Resources
 
