@@ -12,16 +12,18 @@ does this need code at all?* This skill kills that tax cheaply and durably.
 
 ## Quick start
 
-Pick the mode you're in — only **Bootstrap** runs the map generator (`gen-map.py`):
+The reference lives at **`HOST-MAP.md`** in the repo root — one fixed path so any
+mode can find it. Pick the mode you're in (only **Bootstrap** runs the map generator,
+`gen-map.py`):
 
-- **A reference already exists** → **Consult**: read it and start from its decision
-  tree. Regenerate nothing.
-- **No reference yet, you're building one** → **Bootstrap**: read
+- **`HOST-MAP.md` exists at the repo root** → **Consult**: read it and start from its
+  decision tree. Regenerate nothing.
+- **No `HOST-MAP.md` yet** → **Bootstrap**: read
   [references/bootstrap.md](references/bootstrap.md); see
   [references/EXAMPLES.md](references/EXAMPLES.md) for the target shape. Generating
   the map with `gen-map.py` is step 2 there.
-- **The host version changed** → **Maintain**: rerun the map and spot-check that
-  cookbook example paths still resolve.
+- **The host version changed** → **Maintain**: refresh `HOST-MAP.md` (rerun the map,
+  re-stamp) and spot-check that cookbook example paths still resolve.
 
 ## The core idea: document the thin layer, not the source
 
@@ -62,15 +64,15 @@ building. In brief:
 3. Build the cookbook from real examples already in the repo — one pointer per
    change-type.
 4. Write the decision tree: config → custom code → third-party.
-5. Place as a separate top-level file in the target repo; stamp the host version
-   at the top.
+5. Write it to **`HOST-MAP.md`** in the repo root; stamp the host version at the top.
 
 Keep the map broad (step 2); keep the cookbook minimal — a handful of patterns for
 the common cases. Stop there.
 
 ### Consult — the reference exists, you're doing a feature
 
-1. Start at the decision tree: can this be configuration? Check that path first.
+1. Open `HOST-MAP.md`. Start at its decision tree: can this be configuration? Check
+   that path first.
 2. If it needs code, use the map to pinpoint the owning module, then grep the real
    source there. The reference points; the source is ground truth.
 3. Match the change to a cookbook pattern and follow its example.
@@ -78,10 +80,11 @@ the common cases. Stop there.
 
 ### Maintain — the host version changed
 
-The version stamp is the trigger. Because the reference is pointer-based, most of
-it survives a bump untouched: rerun `gen-map.py` and spot-check that cookbook
-example paths still resolve. Re-validate on a deliberate upgrade only, never on a
-schedule. Add it to the project's upgrade checklist.
+The version stamp at the top of `HOST-MAP.md` is the trigger. Because the reference
+is pointer-based, most of it survives a bump untouched: rerun `gen-map.py`, replace
+the map section, re-stamp, and spot-check that cookbook example paths still resolve.
+Re-validate on a deliberate upgrade only, never on a schedule. Add it to the
+project's upgrade checklist.
 
 ## Guardrails
 

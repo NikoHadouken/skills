@@ -118,9 +118,10 @@ skip it.
 ## 5. Stamp, place, and stop
 
 - **Stamp** the host version/build id at the top of the reference.
-- **Place** as a separate top-level file in the target repo — not buried in a
-  `docs/` taxonomy, not folded into an existing agent guide (unless the user prefers
-  otherwise). It's a developer orientation aid; make it easy to find.
+- **Place** it at **`HOST-MAP.md`** in the repo root — a fixed, host-agnostic path so
+  Consult and Maintain can find it without searching. Not a `docs/` taxonomy, not
+  folded into an existing agent guide; the host name goes in the title, not the
+  filename.
 - **Stop** once the map plus a handful of patterns cover the common cases. Note
   in the reference that the long tail is intentionally grep-on-demand, so a future
   reader doesn't mistake the thinness for incompleteness.

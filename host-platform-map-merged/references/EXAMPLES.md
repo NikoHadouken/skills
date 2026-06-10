@@ -1,8 +1,8 @@
 # Example: a finished host reference
 
 This is what the output artifact looks like. Shape and density matter more than
-content — the goal is "thin." Real references live as top-level files in the
-target repo (e.g. `ODOO-REFERENCE.md`).
+content — the goal is "thin." Real references live at **`HOST-MAP.md`** in the repo
+root (fixed filename; the host name goes in the title, as below).
 
 ---
 
