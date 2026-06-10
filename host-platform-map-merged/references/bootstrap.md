@@ -1,11 +1,12 @@
 # Bootstrapping the reference
 
 Detailed how-to for **Bootstrap** mode in [SKILL.md](../SKILL.md).
-See [EXAMPLES.md](EXAMPLES.md) for a finished reference to use as a model.
 
 The goal is a thin, pointer-based orientation aid — not a re-documentation of the
-host. Odoo appears throughout as a worked example; the method is the same for any
-large host platform.
+host. **The method is host-agnostic.** Inline examples are tagged *(Odoo)* and are
+illustrative only — substitute your host's equivalents, and don't assume its
+commands or directory layout exist anywhere else. For a full concrete instance, see
+[EXAMPLES.md](EXAMPLES.md).
 
 ## 0. Orient first
 
@@ -107,13 +108,10 @@ exists — the ORM carries semantics the raw schema loses) to ask:
 - What config parameters/feature flags are set?
 - Does a model/field/setting for this concept already exist?
 
-*Odoo:* `docker compose run --rm odoo shell -d <db>`, then query
-`ir.module.module` (installed modules), `ir.config_parameter` (settings),
-`ir.model.fields` (does this field exist?). A restored production dump works as a
-stand-in for the live instance.
-
-Note when introspection needs a running instance so a reader without one knows to
-skip it.
+Each host exposes this differently — find *its* shell/console, not a generic one.
+[EXAMPLES.md](EXAMPLES.md) shows a concrete instantiation (an Odoo shell session and
+ORM queries). Note when introspection needs a running instance or restored dump, so
+a reader without one knows to skip it.
 
 ## 5. Stamp, place, and stop
 
